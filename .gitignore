@@ -1,0 +1,17 @@
+logs/
+.classpath
+.project
+.settings/
+.idea/
+*.iml
+.DS_Store
+logFile*
+/tf-springboot-api/*.classpath
+/tf-springboot-api/*.project
+/tf-springboot-api/.settings
+/tf-springboot-api/target
+/tf-springboot-core/*.classpath
+/tf-springboot-core/*.project
+/tf-springboot-core/.settings
+/tf-springboot-core/catalina*
+/tf-springboot-core/target
