@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.tf.test.dao.TronSwapTokenMapper">
-  <resultMap id="BaseResultMap" type="com.tf.test.model.TronSwapToken">
+<mapper namespace="com.tf.demo.swap.dao.TronSwapTokenMapper">
+  <resultMap id="BaseResultMap" type="com.tf.demo.swap.model.TronSwapToken">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="lp_token_address" jdbcType="VARCHAR" property="lpTokenAddress" />
     <result column="swap_token_address" jdbcType="VARCHAR" property="swapTokenAddress" />
@@ -46,7 +46,7 @@
     delete from tron_swap_token
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.tf.test.model.TronSwapToken">
+  <insert id="insert" parameterType="com.tf.demo.swap.model.TronSwapToken">
     insert into tron_swap_token (id, lp_token_address, swap_token_address, 
       swap_token_name, swap_token_type, swap_token_precision, 
       swap_pic_url, swap_pair_name, swap_pair_address, 
@@ -66,7 +66,7 @@
       #{volume24h,jdbcType=DECIMAL}, #{transaction24h,jdbcType=BIGINT}, #{status,jdbcType=TINYINT}, 
       #{createTime,jdbcType=BIGINT}, #{updateTime,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="com.tf.test.model.TronSwapToken">
+  <insert id="insertSelective" parameterType="com.tf.demo.swap.model.TronSwapToken">
     insert into tron_swap_token
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -229,7 +229,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.tf.test.model.TronSwapToken">
+  <update id="updateByPrimaryKeySelective" parameterType="com.tf.demo.swap.model.TronSwapToken">
     update tron_swap_token
     <set>
       <if test="lpTokenAddress != null">
@@ -310,7 +310,7 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.tf.test.model.TronSwapToken">
+  <update id="updateByPrimaryKey" parameterType="com.tf.demo.swap.model.TronSwapToken">
     update tron_swap_token
     set lp_token_address = #{lpTokenAddress,jdbcType=VARCHAR},
       swap_token_address = #{swapTokenAddress,jdbcType=VARCHAR},
@@ -339,4 +339,10 @@
       update_time = #{updateTime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <select id="selectAll" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List">
+    from tron_swap_token order by swap_token_type asc, total_liquidity desc
+  </select>
 </mapper>

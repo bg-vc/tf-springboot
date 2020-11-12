@@ -1,7 +1,9 @@
-package com.tf.test.dao;
+package com.tf.demo.swap.dao;
 
-import com.tf.test.model.TronSwapToken;
+import com.tf.demo.swap.model.TronSwapToken;
 import org.apache.ibatis.annotations.Mapper;
+
+import java.util.List;
 
 @Mapper
 public interface TronSwapTokenMapper {
@@ -16,4 +18,7 @@ public interface TronSwapTokenMapper {
     int updateByPrimaryKeySelective(TronSwapToken record);
 
     int updateByPrimaryKey(TronSwapToken record);
+
+    List<TronSwapToken> selectAll();
 }
+

@@ -1,4 +1,4 @@
-package com.tf.test.model;
+package com.tf.demo.swap.model;
 
 import lombok.Data;
 

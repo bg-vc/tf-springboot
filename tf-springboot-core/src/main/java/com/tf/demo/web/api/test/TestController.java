@@ -29,5 +29,4 @@ public class TestController {
     public void setType(String type) {
         TestController.type = type;
     }
-
 }
