@@ -1,0 +1,342 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tf.test.dao.TronSwapTokenMapper">
+  <resultMap id="BaseResultMap" type="com.tf.test.model.TronSwapToken">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="lp_token_address" jdbcType="VARCHAR" property="lpTokenAddress" />
+    <result column="swap_token_address" jdbcType="VARCHAR" property="swapTokenAddress" />
+    <result column="swap_token_name" jdbcType="VARCHAR" property="swapTokenName" />
+    <result column="swap_token_type" jdbcType="TINYINT" property="swapTokenType" />
+    <result column="swap_token_precision" jdbcType="TINYINT" property="swapTokenPrecision" />
+    <result column="swap_pic_url" jdbcType="VARCHAR" property="swapPicUrl" />
+    <result column="swap_pair_name" jdbcType="VARCHAR" property="swapPairName" />
+    <result column="swap_pair_address" jdbcType="VARCHAR" property="swapPairAddress" />
+    <result column="base_token_address" jdbcType="VARCHAR" property="baseTokenAddress" />
+    <result column="base_token_name" jdbcType="VARCHAR" property="baseTokenName" />
+    <result column="base_token_type" jdbcType="TINYINT" property="baseTokenType" />
+    <result column="base_token_precision" jdbcType="TINYINT" property="baseTokenPrecision" />
+    <result column="base_pic_url" jdbcType="VARCHAR" property="basePicUrl" />
+    <result column="swap_token_amount" jdbcType="DECIMAL" property="swapTokenAmount" />
+    <result column="base_token_amount" jdbcType="DECIMAL" property="baseTokenAmount" />
+    <result column="total_liquidity" jdbcType="DECIMAL" property="totalLiquidity" />
+    <result column="swap_token_price1" jdbcType="DECIMAL" property="swapTokenPrice1" />
+    <result column="swap_token_price2" jdbcType="DECIMAL" property="swapTokenPrice2" />
+    <result column="base_token_price1" jdbcType="DECIMAL" property="baseTokenPrice1" />
+    <result column="base_token_price2" jdbcType="DECIMAL" property="baseTokenPrice2" />
+    <result column="volume_24h" jdbcType="DECIMAL" property="volume24h" />
+    <result column="transaction_24h" jdbcType="BIGINT" property="transaction24h" />
+    <result column="status" jdbcType="TINYINT" property="status" />
+    <result column="create_time" jdbcType="BIGINT" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, lp_token_address, swap_token_address, swap_token_name, swap_token_type, swap_token_precision, 
+    swap_pic_url, swap_pair_name, swap_pair_address, base_token_address, base_token_name, 
+    base_token_type, base_token_precision, base_pic_url, swap_token_amount, base_token_amount, 
+    total_liquidity, swap_token_price1, swap_token_price2, base_token_price1, base_token_price2, 
+    volume_24h, transaction_24h, status, create_time, update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tron_swap_token
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tron_swap_token
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.tf.test.model.TronSwapToken">
+    insert into tron_swap_token (id, lp_token_address, swap_token_address, 
+      swap_token_name, swap_token_type, swap_token_precision, 
+      swap_pic_url, swap_pair_name, swap_pair_address, 
+      base_token_address, base_token_name, base_token_type, 
+      base_token_precision, base_pic_url, swap_token_amount, 
+      base_token_amount, total_liquidity, swap_token_price1, 
+      swap_token_price2, base_token_price1, base_token_price2, 
+      volume_24h, transaction_24h, status, 
+      create_time, update_time)
+    values (#{id,jdbcType=INTEGER}, #{lpTokenAddress,jdbcType=VARCHAR}, #{swapTokenAddress,jdbcType=VARCHAR}, 
+      #{swapTokenName,jdbcType=VARCHAR}, #{swapTokenType,jdbcType=TINYINT}, #{swapTokenPrecision,jdbcType=TINYINT}, 
+      #{swapPicUrl,jdbcType=VARCHAR}, #{swapPairName,jdbcType=VARCHAR}, #{swapPairAddress,jdbcType=VARCHAR}, 
+      #{baseTokenAddress,jdbcType=VARCHAR}, #{baseTokenName,jdbcType=VARCHAR}, #{baseTokenType,jdbcType=TINYINT}, 
+      #{baseTokenPrecision,jdbcType=TINYINT}, #{basePicUrl,jdbcType=VARCHAR}, #{swapTokenAmount,jdbcType=DECIMAL}, 
+      #{baseTokenAmount,jdbcType=DECIMAL}, #{totalLiquidity,jdbcType=DECIMAL}, #{swapTokenPrice1,jdbcType=DECIMAL}, 
+      #{swapTokenPrice2,jdbcType=DECIMAL}, #{baseTokenPrice1,jdbcType=DECIMAL}, #{baseTokenPrice2,jdbcType=DECIMAL}, 
+      #{volume24h,jdbcType=DECIMAL}, #{transaction24h,jdbcType=BIGINT}, #{status,jdbcType=TINYINT}, 
+      #{createTime,jdbcType=BIGINT}, #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.tf.test.model.TronSwapToken">
+    insert into tron_swap_token
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="lpTokenAddress != null">
+        lp_token_address,
+      </if>
+      <if test="swapTokenAddress != null">
+        swap_token_address,
+      </if>
+      <if test="swapTokenName != null">
+        swap_token_name,
+      </if>
+      <if test="swapTokenType != null">
+        swap_token_type,
+      </if>
+      <if test="swapTokenPrecision != null">
+        swap_token_precision,
+      </if>
+      <if test="swapPicUrl != null">
+        swap_pic_url,
+      </if>
+      <if test="swapPairName != null">
+        swap_pair_name,
+      </if>
+      <if test="swapPairAddress != null">
+        swap_pair_address,
+      </if>
+      <if test="baseTokenAddress != null">
+        base_token_address,
+      </if>
+      <if test="baseTokenName != null">
+        base_token_name,
+      </if>
+      <if test="baseTokenType != null">
+        base_token_type,
+      </if>
+      <if test="baseTokenPrecision != null">
+        base_token_precision,
+      </if>
+      <if test="basePicUrl != null">
+        base_pic_url,
+      </if>
+      <if test="swapTokenAmount != null">
+        swap_token_amount,
+      </if>
+      <if test="baseTokenAmount != null">
+        base_token_amount,
+      </if>
+      <if test="totalLiquidity != null">
+        total_liquidity,
+      </if>
+      <if test="swapTokenPrice1 != null">
+        swap_token_price1,
+      </if>
+      <if test="swapTokenPrice2 != null">
+        swap_token_price2,
+      </if>
+      <if test="baseTokenPrice1 != null">
+        base_token_price1,
+      </if>
+      <if test="baseTokenPrice2 != null">
+        base_token_price2,
+      </if>
+      <if test="volume24h != null">
+        volume_24h,
+      </if>
+      <if test="transaction24h != null">
+        transaction_24h,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="lpTokenAddress != null">
+        #{lpTokenAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="swapTokenAddress != null">
+        #{swapTokenAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="swapTokenName != null">
+        #{swapTokenName,jdbcType=VARCHAR},
+      </if>
+      <if test="swapTokenType != null">
+        #{swapTokenType,jdbcType=TINYINT},
+      </if>
+      <if test="swapTokenPrecision != null">
+        #{swapTokenPrecision,jdbcType=TINYINT},
+      </if>
+      <if test="swapPicUrl != null">
+        #{swapPicUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="swapPairName != null">
+        #{swapPairName,jdbcType=VARCHAR},
+      </if>
+      <if test="swapPairAddress != null">
+        #{swapPairAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="baseTokenAddress != null">
+        #{baseTokenAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="baseTokenName != null">
+        #{baseTokenName,jdbcType=VARCHAR},
+      </if>
+      <if test="baseTokenType != null">
+        #{baseTokenType,jdbcType=TINYINT},
+      </if>
+      <if test="baseTokenPrecision != null">
+        #{baseTokenPrecision,jdbcType=TINYINT},
+      </if>
+      <if test="basePicUrl != null">
+        #{basePicUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="swapTokenAmount != null">
+        #{swapTokenAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="baseTokenAmount != null">
+        #{baseTokenAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="totalLiquidity != null">
+        #{totalLiquidity,jdbcType=DECIMAL},
+      </if>
+      <if test="swapTokenPrice1 != null">
+        #{swapTokenPrice1,jdbcType=DECIMAL},
+      </if>
+      <if test="swapTokenPrice2 != null">
+        #{swapTokenPrice2,jdbcType=DECIMAL},
+      </if>
+      <if test="baseTokenPrice1 != null">
+        #{baseTokenPrice1,jdbcType=DECIMAL},
+      </if>
+      <if test="baseTokenPrice2 != null">
+        #{baseTokenPrice2,jdbcType=DECIMAL},
+      </if>
+      <if test="volume24h != null">
+        #{volume24h,jdbcType=DECIMAL},
+      </if>
+      <if test="transaction24h != null">
+        #{transaction24h,jdbcType=BIGINT},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=TINYINT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=BIGINT},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.tf.test.model.TronSwapToken">
+    update tron_swap_token
+    <set>
+      <if test="lpTokenAddress != null">
+        lp_token_address = #{lpTokenAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="swapTokenAddress != null">
+        swap_token_address = #{swapTokenAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="swapTokenName != null">
+        swap_token_name = #{swapTokenName,jdbcType=VARCHAR},
+      </if>
+      <if test="swapTokenType != null">
+        swap_token_type = #{swapTokenType,jdbcType=TINYINT},
+      </if>
+      <if test="swapTokenPrecision != null">
+        swap_token_precision = #{swapTokenPrecision,jdbcType=TINYINT},
+      </if>
+      <if test="swapPicUrl != null">
+        swap_pic_url = #{swapPicUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="swapPairName != null">
+        swap_pair_name = #{swapPairName,jdbcType=VARCHAR},
+      </if>
+      <if test="swapPairAddress != null">
+        swap_pair_address = #{swapPairAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="baseTokenAddress != null">
+        base_token_address = #{baseTokenAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="baseTokenName != null">
+        base_token_name = #{baseTokenName,jdbcType=VARCHAR},
+      </if>
+      <if test="baseTokenType != null">
+        base_token_type = #{baseTokenType,jdbcType=TINYINT},
+      </if>
+      <if test="baseTokenPrecision != null">
+        base_token_precision = #{baseTokenPrecision,jdbcType=TINYINT},
+      </if>
+      <if test="basePicUrl != null">
+        base_pic_url = #{basePicUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="swapTokenAmount != null">
+        swap_token_amount = #{swapTokenAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="baseTokenAmount != null">
+        base_token_amount = #{baseTokenAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="totalLiquidity != null">
+        total_liquidity = #{totalLiquidity,jdbcType=DECIMAL},
+      </if>
+      <if test="swapTokenPrice1 != null">
+        swap_token_price1 = #{swapTokenPrice1,jdbcType=DECIMAL},
+      </if>
+      <if test="swapTokenPrice2 != null">
+        swap_token_price2 = #{swapTokenPrice2,jdbcType=DECIMAL},
+      </if>
+      <if test="baseTokenPrice1 != null">
+        base_token_price1 = #{baseTokenPrice1,jdbcType=DECIMAL},
+      </if>
+      <if test="baseTokenPrice2 != null">
+        base_token_price2 = #{baseTokenPrice2,jdbcType=DECIMAL},
+      </if>
+      <if test="volume24h != null">
+        volume_24h = #{volume24h,jdbcType=DECIMAL},
+      </if>
+      <if test="transaction24h != null">
+        transaction_24h = #{transaction24h,jdbcType=BIGINT},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=TINYINT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=BIGINT},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.tf.test.model.TronSwapToken">
+    update tron_swap_token
+    set lp_token_address = #{lpTokenAddress,jdbcType=VARCHAR},
+      swap_token_address = #{swapTokenAddress,jdbcType=VARCHAR},
+      swap_token_name = #{swapTokenName,jdbcType=VARCHAR},
+      swap_token_type = #{swapTokenType,jdbcType=TINYINT},
+      swap_token_precision = #{swapTokenPrecision,jdbcType=TINYINT},
+      swap_pic_url = #{swapPicUrl,jdbcType=VARCHAR},
+      swap_pair_name = #{swapPairName,jdbcType=VARCHAR},
+      swap_pair_address = #{swapPairAddress,jdbcType=VARCHAR},
+      base_token_address = #{baseTokenAddress,jdbcType=VARCHAR},
+      base_token_name = #{baseTokenName,jdbcType=VARCHAR},
+      base_token_type = #{baseTokenType,jdbcType=TINYINT},
+      base_token_precision = #{baseTokenPrecision,jdbcType=TINYINT},
+      base_pic_url = #{basePicUrl,jdbcType=VARCHAR},
+      swap_token_amount = #{swapTokenAmount,jdbcType=DECIMAL},
+      base_token_amount = #{baseTokenAmount,jdbcType=DECIMAL},
+      total_liquidity = #{totalLiquidity,jdbcType=DECIMAL},
+      swap_token_price1 = #{swapTokenPrice1,jdbcType=DECIMAL},
+      swap_token_price2 = #{swapTokenPrice2,jdbcType=DECIMAL},
+      base_token_price1 = #{baseTokenPrice1,jdbcType=DECIMAL},
+      base_token_price2 = #{baseTokenPrice2,jdbcType=DECIMAL},
+      volume_24h = #{volume24h,jdbcType=DECIMAL},
+      transaction_24h = #{transaction24h,jdbcType=BIGINT},
+      status = #{status,jdbcType=TINYINT},
+      create_time = #{createTime,jdbcType=BIGINT},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
