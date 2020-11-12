@@ -11,7 +11,7 @@
     </appender>
 
     <appender name="APP_INFO" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <File>${LOG_PATH}/bojianger_user_all.log</File>
+        <File>${LOG_PATH}/tf_all.log</File>
 
         <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
             <pattern>[%thread] %-5level %d{yyyy-MM-dd HH:mm:ss.SSS} %logger{5}[%L] - %msg%n</pattern>
@@ -22,12 +22,12 @@
         </filter>
 
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <FileNamePattern>${LOG_PATH}/backup/bojianger_user_all.%d{yyyy-MM-dd}.log</FileNamePattern>
+            <FileNamePattern>${LOG_PATH}/backup/tf_all.%d{yyyy-MM-dd}.log</FileNamePattern>
         </rollingPolicy>
     </appender>
 
     <appender name="APP_ERROR" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <File>${LOG_PATH}/bojianger_user_error.log</File>
+        <File>${LOG_PATH}/tf_error.log</File>
         <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
             <pattern>[%thread] %-5level %d{yyyy-MM-dd HH:mm:ss.SSS} %logger{5}[%L] - %msg%n</pattern>
         </encoder>
@@ -37,7 +37,7 @@
         </filter>
 
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <FileNamePattern>${LOG_PATH}/backup/bojianger_user_error.%d{yyyy-MM-dd}.log</FileNamePattern>
+            <FileNamePattern>${LOG_PATH}/backup/tf_error.%d{yyyy-MM-dd}.log</FileNamePattern>
         </rollingPolicy>
     </appender>
 
